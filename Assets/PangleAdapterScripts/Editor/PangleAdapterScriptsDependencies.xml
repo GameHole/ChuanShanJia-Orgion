@@ -1,0 +1,37 @@
+<dependencies>
+
+  <!-- Android dependencies are specified under the "androidPackages" element.
+       Each "androidPackage" element contains the attributes of an Android
+       dependency (e.g AAR, JAR reference). -->
+  <androidPackages>
+    <!-- Global set of repositories to search for packages.
+         These repos will be searched for all packages specified by
+         androidPackage. -->
+    <repositories>
+      <repository>https://artifact.bytedance.com/repository/pangle</repository>
+    </repositories>
+    <!-- The "spec" attribute is *required* and provides the Maven package
+         specification.
+
+         Currently this only supports group:artifact:version_specification where
+         group:artifact:version_specification references a Maven package that
+         can be located in:
+         * Maven central.
+         * Google's Maven repo.
+         * Local Android SDK Maven repo.
+
+         Additional repositories can be added using the "repositories" element.
+    -->
+    <androidPackage spec="com.pangle.cn:ads-sdk-pro:4.1.0.0"/>
+    <androidPackage spec="com.squareup.okhttp3:okhttp:3.12.1"/>
+    <androidPackage spec="com.android.support:appcompat-v7:28.0.0"/>    
+    <androidPackage spec="com.android.support:support-annotations:28.0.0"/>   
+    <androidPackage spec="com.android.support:support-v4:28.0.0"/>
+  </androidPackages>
+
+  <!-- iOS Cocoapod dependencies can be specified by each iosPod element. -->
+  <iosPods>
+    <iosPod name="Ads-CN" bitcodeEnabled="true" addToAllTargets="false">
+    </iosPod>
+  </iosPods>
+</dependencies>
