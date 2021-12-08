@@ -1,6 +1,6 @@
 namespace ByteDance.Union
 {
-#if  !UNITY_EDITOR && UNITY_ANDROID
+#if !UNITY_EDITOR && UNITY_ANDROID
     using UnityEngine;
 
     public class Pangle : PangleBase
@@ -12,15 +12,16 @@ namespace ByteDance.Union
         internal static int NETWORK_STATE_4G = 5;
         private static AndroidJavaObject activity;
 
-        public static void InitializeSDK(PangleInitializeCallBack callback, AndroidJavaObject cfg,CustomConfiguration configuration = null)
+        public static void InitializeSDK(PangleInitializeCallBack callback,CustomConfiguration configuration = null)
         {
             Debug.Log("Pangle InitializeSDK start" );
             var activity = GetActivity();
-            var runnable = new AndroidJavaRunnable(() => initTTSdk(callback, cfg, configuration));
+            var runnable = new AndroidJavaRunnable(
+                () => initTTSdk(callback, configuration));
             activity.Call("runOnUiThread", runnable);
         }
 
-        private static void initTTSdk(PangleInitializeCallBack callback,AndroidJavaObject cfg,CustomConfiguration configuration)
+        private static void initTTSdk(PangleInitializeCallBack callback,CustomConfiguration configuration)
         {
             Debug.Log("Pangle initTTSdk " );
             var sdkInitCallback = new SdkInitCallback(callback);
